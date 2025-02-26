@@ -27,17 +27,37 @@ dependencies {
     // Spring boot
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
 
     // lombok
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.projectlombok:lombok:1.18.30'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
 
     // h2
     runtimeOnly 'com.h2database:h2'
 
+
     // test
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+//        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    // fixture Monkey
+    testImplementation 'com.navercorp.fixturemonkey:fixture-monkey-starter:1.1.9'
+
+
+//
+//    // Log4j2 추가
+//    implementation 'org.apache.logging.log4j:log4j-core:2.20.0'
+//    implementation 'org.apache.logging.log4j:log4j-api:2.20.0'
+//    implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.20.0'
+//
+//    // Spring Boot에서 Logback 제거 (Log4j2 사용)
+//    implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+
 }
 
 tasks.named('test') {
